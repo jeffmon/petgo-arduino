@@ -56,8 +56,8 @@ app.get("/open", (req, res) => {
 
 app.get("/close", (req, res) => {
   led.on();
-  door1.to(75, 500);
-  door2.to(78, 500);
+  door1.to(75, 700);
+  door2.to(78, 700);
   servo.to(3);
   setTimeout(() => {
     servo.to(75);
