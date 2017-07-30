@@ -24,7 +24,7 @@ board.on("ready", () => {
 
   door2 = new five.Servo({
     pin: 16,
-    startAt: 75
+    startAt: 78
   })
 
   piezo = new five.Piezo({
@@ -49,15 +49,15 @@ app.get("/sound", (req, res) => {
 
 app.get("/open", (req, res) => {
   led.on();
-  door1.to(175);
-  door2.to(168);
+  door1.to(170, 500);
+  door2.to(168, 500);
   res.end("open!");
 });
 
 app.get("/close", (req, res) => {
   led.on();
-  door1.to(75);
-  door2.to(75);
+  door1.to(75, 500);
+  door2.to(78, 500);
   servo.to(3);
   setTimeout(() => {
     servo.to(75);
