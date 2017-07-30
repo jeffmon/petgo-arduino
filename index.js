@@ -47,11 +47,6 @@ app.get("/sound", (req, res) => {
   res.end("sound!");
 })
 
-
-app.listen(port, () => {
-  console.log(`Listening on ${port}`);
-});
-
 app.get("/open", (req, res) => {
   led.on();
   door1.to(175);
@@ -63,5 +58,13 @@ app.get("/close", (req, res) => {
   led.on();
   door1.to(75);
   door2.to(75);
+  servo.to(3);
+  setTimeout(() => {
+    servo.to(75);
+  }, 500)
   res.end("close!");
+});
+
+app.listen(port, () => {
+  console.log(`Listening on ${port}`);
 });
