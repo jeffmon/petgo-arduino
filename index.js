@@ -6,18 +6,25 @@ const board = new five.Board();
 var led;
 var servo;
 var piezo;
-var door;
+var door1;
+var door2;
 
 board.on("ready", () => {
   led = new five.Led(7);
+
   servo = new five.Servo({
     pin: 14,
     startAt: 75
   })
-  //
-  door = new five.Servo({
+
+  door1 = new five.Servo({
     pin: 15,
-    startAt:75
+    startAt: 75
+  })
+
+  door2 = new five.Servo({
+    pin: 16,
+    startAt: 75
   })
 
   piezo = new five.Piezo({
@@ -47,12 +54,14 @@ app.listen(port, () => {
 
 app.get("/open", (req, res) => {
   led.on();
-  door.to(175);
+  door1.to(175);
+  door2.to(168);
   res.end("open!");
 });
 
 app.get("/close", (req, res) => {
   led.on();
-  door.to(75);
+  door1.to(75);
+  door2.to(75);
   res.end("close!");
 });
